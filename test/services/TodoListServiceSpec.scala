@@ -39,8 +39,8 @@ class TodoListServiceSpec extends AnyFreeSpecLike with MockFactory with ScalaFut
     }
 
     ".getAllTodoLists" in {
-      (() => mockRepository.getAllTodoLists).expects().returning(Future.successful(Seq.empty))
-      underTest.getAllTodoLists().futureValue shouldBe GetAllTodoListsResult(Seq.empty)
+      (() => mockRepository.getAllTodoLists).expects().returning(Future.successful(List.empty))
+      underTest.getAllTodoLists().futureValue shouldBe GetAllTodoListsResult(List.empty)
     }
 
     ".deleteTodoList" in {

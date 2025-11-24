@@ -15,7 +15,7 @@ import scala.concurrent.{ExecutionContext, Future}
 trait TodoListRepository {
   def getTodoList(id: UUID): Future[Option[TodoList]]
 
-  def getAllTodoLists: Future[Seq[TodoList]]
+  def getAllTodoLists: Future[List[TodoList]]
 
   def upsertTodoList(todoList: TodoList): Future[UUID]
 
@@ -47,8 +47,8 @@ class TodoListRepositoryImpl @Inject()(mongoComponent: MongoComponent)(implicit 
     collection.find(Filters.equal("id", id.toString)).headOption
   }
 
-  def getAllTodoLists: Future[Seq[TodoList]] = {
-    collection.find(BsonDocument()).toFuture().map(_.toSeq)
+  def getAllTodoLists: Future[List[TodoList]] = {
+    collection.find(BsonDocument()).toFuture().map(_.toList)
   }
 
   def upsertTodoList(todoList: TodoList): Future[UUID] = {
