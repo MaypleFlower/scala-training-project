@@ -3,8 +3,14 @@
 # https://www.playframework.com/documentation/latest/ScalaRouting
 # ~~~~
 
-# An example controller showing a sample home page
-GET     /                           controllers.HomeController.index()
+GET           /get/:id           controllers.TodoListController.getTodoList(id: java.util.UUID)
 
-# Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+GET           /getAll            controllers.TodoListController.getAllTodoLists()
+
+POST          /create            controllers.TodoListController.createTodoList()
+
+POST          /update/:id        controllers.TodoListController.updateTodoList(id: java.util.UUID)
+
+DELETE        /deleteAll         controllers.TodoListController.deleteAllTodoLists()
+
+DELETE        /delete/:id        controllers.TodoListController.deleteTodoList(id: java.util.UUID)
